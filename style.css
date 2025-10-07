@@ -1,44 +1,114 @@
-/* Общие */
 * { box-sizing: border-box; }
-html,body { height:100%; margin:0; font-family: "Segoe UI", Roboto, Arial; background:#0b0b0b; color:#ddd; }
+html, body {
+  margin: 0;
+  height: 100%;
+  font-family: "Segoe UI", sans-serif;
+  color: #ddd;
+  background: #0a0a0a;
+  overflow: hidden;
+}
 
-/* Экран-слои */
-.screen { display:none; position:absolute; inset:0; z-index:20; }
-.screen.active { display:block; }
+/* Общий экран */
+.screen { display: none; position: absolute; inset: 0; z-index: 10; }
+.screen.active { display: block; }
 
-/* Стартовый мрачный экран */
-#welcome-screen { background: linear-gradient(180deg, #050505, #0b0b0b); display:flex; align-items:center; justify-content:center; }
-.welcome-content { width:90%; max-width:520px; background: rgba(10,10,10,0.85); padding:28px; border-radius:12px; text-align:center; border:1px solid #222; box-shadow:0 10px 30px rgba(0,0,0,0.6); }
-.welcome-content h1 { margin:0 0 6px; font-size:40px; color:#e6e6e6; text-shadow:0 2px 8px rgba(0,0,0,0.6); }
-.subtitle { margin:0 0 18px; color:#bfbfbf; }
-.main-btn { padding:12px 24px; font-size:18px; color:#fff; background:#2f2f2f; border:none; border-radius:10px; cursor:pointer; }
-.sec-btn { padding:10px 18px; font-size:14px; color:#ddd; background:transparent; border:1px solid rgba(255,255,255,0.04); border-radius:8px; cursor:pointer; }
+/* 🌆 Стартовый экран */
+#welcome-screen {
+  background: radial-gradient(circle at center, #101010 0%, #050505 80%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.fog {
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, rgba(0,0,0,0.9) 70%);
+  animation: fog 20s linear infinite;
+}
+@keyframes fog {
+  from { transform: translate(0, 0); }
+  to { transform: translate(-20%, -20%); }
+}
+.welcome-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  background: rgba(10,10,10,0.7);
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.7);
+}
+.welcome-content h1 {
+  font-size: 42px;
+  color: #e6e6e6;
+  text-shadow: 0 0 20px rgba(255,255,255,0.2);
+}
+.subtitle { color: #bbb; margin-bottom: 20px; }
+.main-btn, .sec-btn, #buttons button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: linear-gradient(180deg, #333, #111);
+  color: #eee;
+}
+.main-btn:hover { background: #555; }
 
 /* Карты */
-.map-area { position:absolute; inset:0; z-index:0; }
+.map-area { position: absolute; inset: 0; }
 
-/* Нижняя панель подтверждений */
-.bottom-panel { position:absolute; left:50%; transform:translateX(-50%); bottom:18px; z-index:6; background:rgba(8,8,8,0.8); padding:10px 14px; border-radius:10px; display:flex; gap:10px; align-items:center; }
+/* Панели */
+.bottom-panel {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(10,10,10,0.8);
+  padding: 10px 20px;
+  border-radius: 10px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
 
 /* Игровой UI */
-#ui { position:absolute; top:8px; left:8px; right:8px; z-index:8; display:flex; justify-content:space-between; pointer-events:auto; }
-#stats { background: rgba(24,24,24,0.85); padding:8px 12px; border-radius:10px; border:1px solid rgba(255,255,255,0.03); font-size:14px; }
-#rightPanel { display:flex; gap:8px; align-items:center; }
-button { background: linear-gradient(180deg,#2b2b2b,#191919); color:#e6e6e6; border:1px solid rgba(255,255,255,0.03); padding:8px 12px; border-radius:10px; cursor:pointer; }
-button:active { transform:translateY(1px); }
+#ui {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+#stats {
+  background: rgba(20,20,20,0.8);
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+#buttons { display: flex; gap: 6px; }
 
 /* Джойстик */
-#joystick { position:absolute; right:22px; bottom:72px; width:120px; height:120px; border-radius:50%; background: radial-gradient(circle at 50% 40%, rgba(255,255,255,0.03), rgba(0,0,0,0.2)); z-index:9; display:none; touch-action:none; }
-#stick { width:60px; height:60px; border-radius:50%; background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(0,0,0,0.3)); transform:translate(0,0); }
+#joystick {
+  position: absolute;
+  bottom: 40px;
+  right: 40px;
+  width: 120px;
+  height: 120px;
+  background: rgba(255,255,255,0.03);
+  border-radius: 50%;
+  display: none;
+}
+#stick {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  margin: 30px;
+}
 
 /* Маркеры */
-.marker-player { width:16px; height:16px; border-radius:50%; background:#8a2be2; box-shadow:0 2px 6px rgba(0,0,0,0.6); }
-.marker-ally { width:10px; height:10px; border-radius:50%; background:#2b7cff; box-shadow:0 1px 5px rgba(0,0,0,0.5); }
-
-/* Адаптив */
-@media (max-width:600px){
-  .welcome-content h1 { font-size:30px; }
-  .bottom-panel { flex-direction:column; }
-  #joystick { right:12px; bottom:60px; width:110px; height:110px; }
-  #stick { width:58px; height:58px; }
-}
+.marker-player { width: 16px; height: 16px; border-radius: 50%; background: #8a2be2; }
+.marker-ally { width: 10px; height: 10px; border-radius: 50%; background: #2b7cff; }
