@@ -2,24 +2,43 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>City Survival: Sputnik Edition</title>
   <link href="style.css" rel="stylesheet" />
-  <script src="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.js"></script>
-  <link href="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.css" rel="stylesheet" />
+
+  <!-- Подключаем MapLibre -->
+  <link href="https://unpkg.com/maplibre-gl@3.6.1/dist/maplibre-gl.css" rel="stylesheet" />
+  <script src="https://unpkg.com/maplibre-gl@3.6.1/dist/maplibre-gl.js"></script>
 </head>
 <body>
+  <!-- Карта -->
   <div id="map"></div>
+
+  <!-- Интерфейс -->
   <div id="overlay"></div>
   <div id="ui">
-    <button id="buildBtn">🏗️ Построить</button>
+    <button id="buildBtn">🧱 Построить</button>
     <button id="allyBtn">🧍 Союзники</button>
     <button id="gatherBtn">📦 Собрать</button>
     <button id="restBtn">💤 Отдых</button>
   </div>
+
+  <!-- Мини-стик -->
   <div id="joystick">
     <div id="stick"></div>
   </div>
+
+  <!-- Скрипт карты -->
+  <script>
+    const map = new maplibregl.Map({
+      container: 'map',
+      style: 'https://tiles.maps.sputnik.ru/tiles/sputnik.json',
+      center: [37.6156, 55.7522], // Москва
+      zoom: 11
+    });
+  </script>
+
+  <!-- Скрипт игры -->
   <script src="script.js"></script>
 </body>
 </html>
