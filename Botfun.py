@@ -6,7 +6,7 @@ from telegram import ReplyKeyboardMarkup, Update
 from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters, ContextTypes
 
 # === НАСТРОЙКИ ===
-API_TOKEN = "ВАШ_ТОКЕН_ОТ_BOTFATHER"  # <-- замените на свой токен
+API_TOKEN = "8492809766:AAE3bkKLZCUb-niPkWAMm-v1xXzDBsx7Qps"  # <-- замените на свой токен
 GAME_URL = "http://mygame.fun/"
 # ==================
 
