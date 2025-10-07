@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>City Survival: Sputnik Edition</title>
-  <link href="style.css" rel="stylesheet" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>City Survival — Sputnik (MapLibre)</title>
 
-  <!-- Подключаем MapLibre -->
+  <!-- стиль -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- MapLibre -->
   <link href="https://unpkg.com/maplibre-gl@3.6.1/dist/maplibre-gl.css" rel="stylesheet" />
   <script src="https://unpkg.com/maplibre-gl@3.6.1/dist/maplibre-gl.js"></script>
 </head>
@@ -14,13 +16,30 @@
   <!-- Карта -->
   <div id="map"></div>
 
-  <!-- Интерфейс -->
+  <!-- затемняющий слой (атмосфера) -->
   <div id="overlay"></div>
-  <div id="ui">
-    <button id="buildBtn">🧱 Построить</button>
-    <button id="allyBtn">🧍 Союзники</button>
-    <button id="gatherBtn">📦 Собрать</button>
-    <button id="restBtn">💤 Отдых</button>
+
+  <!-- Верхняя панель: союзники / ресурсы, и справа кнопки -->
+  <div id="topbar">
+    <div id="leftPanel">
+      <button id="showAlliesBtn" class="roundBtn">🧍 Союзники</button>
+      <div id="stats">
+        <div>Союзники: <span id="allyCount">0</span></div>
+        <div>Ресурсы: <span id="resourcesCount">0</span></div>
+      </div>
+    </div>
+
+    <div id="rightPanel">
+      <button id="exitBtn" class="roundBtn">🚶 Выйти</button>
+      <button id="buildBtn" class="roundBtn">🧱 Строить</button>
+    </div>
+  </div>
+
+  <!-- Нижняя панель с действиями -->
+  <div id="bottombar">
+    <button id="gatherBtn" class="mainBtn">📦 Собрать</button>
+    <button id="sendAllBtn" class="mainBtn">📣 Отправить всех</button>
+    <button id="restBtn" class="mainBtn">💤 Отдых</button>
   </div>
 
   <!-- Мини-стик -->
@@ -28,17 +47,7 @@
     <div id="stick"></div>
   </div>
 
-  <!-- Скрипт карты -->
-  <script>
-    const map = new maplibregl.Map({
-      container: 'map',
-      style: 'https://tiles.maps.sputnik.ru/tiles/sputnik.json',
-      center: [37.6156, 55.7522], // Москва
-      zoom: 11
-    });
-  </script>
-
-  <!-- Скрипт игры -->
+  <!-- Скрипт логики -->
   <script src="script.js"></script>
 </body>
 </html>
