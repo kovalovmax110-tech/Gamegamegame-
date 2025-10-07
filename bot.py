@@ -4,7 +4,7 @@ from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
 
 # ============ НАСТРОЙКИ ============
 # ВСТАВЬ СВОЙ ТОКЕН СЮДА 👇 (без пробелов, кавычки оставь)
-TOKEN = "ВСТАВЬ_СЮДА_СВОЙ_ТОКЕН_ОТ_BOTFATHER"
+TOKEN = "8492809766:AAE3bkKLZCUb-niPkWAMm-v1xXzDBsx7Qps"
 
 # Ссылка на твою игру (GitHub Pages или Netlify)
 WEBAPP_URL = "https://твоя-ссылка-на-игру.github.io/"
