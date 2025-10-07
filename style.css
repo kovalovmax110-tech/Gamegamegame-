@@ -1,22 +1,93 @@
-body, html { margin: 0; height: 100%; overflow: hidden; background: #111; }
-#map { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-#overlay { position: absolute; inset: 0; background: rgba(20,20,20,0.4); pointer-events: none; }
-#ui {
-  position: absolute; top: 10px; left: 10px;
-  display: flex; flex-direction: column; gap: 6px;
+/* Общие */
+* { box-sizing: border-box; }
+html,body { height:100%; margin:0; font-family: "Segoe UI", Roboto, Arial; background:#0f0f0f; color:#ddd; }
+
+/* Карта */
+#map { position: absolute; inset: 0; z-index: 0; }
+
+/* Лёгкое затемнение/дым над картой */
+#overlay {
+  position: absolute; inset:0; z-index: 2;
+  background: linear-gradient(to bottom, rgba(12,12,12,0.5), rgba(8,8,8,0.65));
+  pointer-events: none;
 }
-button {
-  background: #333; color: #ccc; border: 1px solid #555;
-  padding: 6px 12px; border-radius: 6px; font-size: 14px;
-  box-shadow: 0 0 8px rgba(0,0,0,0.3);
+
+/* Верхняя панель */
+#topbar {
+  position: absolute; z-index: 6; left:12px; right:12px; top:12px;
+  display:flex; justify-content:space-between; align-items:center;
+  pointer-events: auto;
 }
+
+/* левый блок (показывает союзников и ресурсы) */
+#leftPanel { display:flex; gap:10px; align-items:center; }
+#stats { background: rgba(20,20,20,0.6); padding:10px 12px; border-radius:10px; border:1px solid rgba(255,255,255,0.03); color:#e6e6e6; box-shadow: 0 6px 14px rgba(0,0,0,0.5); }
+#stats div { font-size:14px; line-height:1.2; }
+
+/* правый блок (кнопки) */
+#rightPanel { display:flex; gap:8px; align-items:center; }
+
+/* Кнопки */
+.roundBtn {
+  background: linear-gradient(180deg,#2b2b2b,#1f1f1f);
+  color:#e3e3e3; border:1px solid rgba(255,255,255,0.04);
+  padding:8px 12px; border-radius:12px; font-size:14px; cursor:pointer;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.45);
+}
+.roundBtn:active { transform: translateY(1px); }
+
+.mainBtn {
+  background: linear-gradient(180deg,#262222,#191818);
+  color:#ddd; border:1px solid rgba(255,255,255,0.03);
+  padding:10px 14px; border-radius:10px; font-size:15px; margin:0 6px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.55);
+  cursor:pointer;
+}
+.mainBtn:active { transform: translateY(1px); }
+
+/* нижняя панель */
+#bottombar {
+  position: absolute; z-index: 6; left:12px; right:12px; bottom:18px;
+  display:flex; justify-content:center; gap:8px; pointer-events:auto;
+}
+
+/* джойстик */
 #joystick {
-  position: absolute; bottom: 40px; right: 40px;
-  width: 120px; height: 120px; border-radius: 50%;
-  background: rgba(255,255,255,0.05);
+  position: absolute; z-index:6; right:20px; bottom:90px;
+  width:120px; height:120px; border-radius:50%;
+  background: radial-gradient(circle at 50% 40%, rgba(255,255,255,0.03), rgba(0,0,0,0.15));
+  display:flex; align-items:center; justify-content:center; box-shadow: inset 0 0 12px rgba(0,0,0,0.6);
 }
 #stick {
-  position: absolute; left: 30px; top: 30px;
-  width: 60px; height: 60px; border-radius: 50%;
-  background: rgba(255,255,255,0.2);
+  width:62px; height:62px; border-radius:50%;
+  background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(0,0,0,0.2));
+  transform: translate(0,0);
+  touch-action: none;
+}
+
+/* маркеры (CSS классы для элементов маркеров — при создании элементов используем эти стили) */
+.marker-player {
+  width:14px; height:14px; border-radius:50%;
+  background: #7b37d9; border:3px solid rgba(0,0,0,0.5);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.6);
+}
+.marker-ally {
+  width:10px; height:10px; border-radius:50%;
+  background: #2b7cff; border:2px solid rgba(0,0,0,0.45);
+  box-shadow: 0 1px 6px rgba(0,0,0,0.55);
+}
+.marker-barricade {
+  width:28px; height:8px; border-radius:3px;
+  background: linear-gradient(180deg,#a3a3a3,#6f6f6f);
+  border:1px solid rgba(0,0,0,0.45);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.6);
+}
+
+/* мобильная оптимизация */
+@media (max-width:600px){
+  #stats { font-size:13px; padding:8px 10px; }
+  .roundBtn { padding:7px 10px; font-size:13px; }
+  .mainBtn { padding:8px 10px; font-size:14px; }
+  #joystick { right:12px; bottom:70px; width:110px; height:110px; }
+  #stick { width:58px; height:58px; }
 }
