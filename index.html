@@ -1,53 +1,31 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>City Survival — Sputnik (MapLibre)</title>
-
-  <!-- стиль -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>City Survival</title>
   <link rel="stylesheet" href="style.css" />
-
-  <!-- MapLibre -->
   <link href="https://unpkg.com/maplibre-gl@3.6.1/dist/maplibre-gl.css" rel="stylesheet" />
   <script src="https://unpkg.com/maplibre-gl@3.6.1/dist/maplibre-gl.js"></script>
 </head>
 <body>
-  <!-- Карта -->
   <div id="map"></div>
 
-  <!-- затемняющий слой (атмосфера) -->
   <div id="overlay"></div>
 
-  <!-- Верхняя панель: союзники / ресурсы, и справа кнопки -->
-  <div id="topbar">
-    <div id="leftPanel">
-      <button id="showAlliesBtn" class="roundBtn">🧍 Союзники</button>
-      <div id="stats">
-        <div>Союзники: <span id="allyCount">0</span></div>
-        <div>Ресурсы: <span id="resourcesCount">0</span></div>
-      </div>
-    </div>
-
-    <div id="rightPanel">
-      <button id="exitBtn" class="roundBtn">🚶 Выйти</button>
-      <button id="buildBtn" class="roundBtn">🧱 Строить</button>
+  <div id="ui">
+    <div id="stats">🧍 Союзники: <span id="allyCount">0</span> | 📦 Ресурсы: <span id="resourcesCount">0</span></div>
+    <div id="buttons">
+      <button id="allyBtn">🧍 Союзники</button>
+      <button id="exitBtn">🚶 Выйти</button>
+      <button id="buildBtn">🧱 Строить</button>
     </div>
   </div>
 
-  <!-- Нижняя панель с действиями -->
-  <div id="bottombar">
-    <button id="gatherBtn" class="mainBtn">📦 Собрать</button>
-    <button id="sendAllBtn" class="mainBtn">📣 Отправить всех</button>
-    <button id="restBtn" class="mainBtn">💤 Отдых</button>
-  </div>
-
-  <!-- Мини-стик -->
   <div id="joystick">
     <div id="stick"></div>
   </div>
 
-  <!-- Скрипт логики -->
   <script src="script.js"></script>
 </body>
 </html>
