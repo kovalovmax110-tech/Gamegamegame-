@@ -1,0 +1,52 @@
+body {
+  margin: 0;
+  overflow: hidden;
+  background: #111;
+  touch-action: none;
+  user-select: none;
+}
+canvas {
+  background: #222;
+  display: block;
+}
+#controls {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+button {
+  background: #333;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-size: 16px;
+}
+#joystick {
+  position: absolute;
+  bottom: 40px;
+  right: 40px;
+  width: 120px;
+  height: 120px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+  touch-action: none;
+}
+#stick {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  left: 30px;
+  top: 30px;
+}
+#allies-box {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: white;
+}
