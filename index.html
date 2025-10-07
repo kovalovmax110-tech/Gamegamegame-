@@ -3,29 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>City Survival</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://unpkg.com/maplibre-gl@3.6.1/dist/maplibre-gl.css" rel="stylesheet" />
-  <script src="https://unpkg.com/maplibre-gl@3.6.1/dist/maplibre-gl.js"></script>
+  <title>City Survival: Map Edition</title>
+  <link href="style.css" rel="stylesheet" />
+  <script src="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.js"></script>
+  <link href="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.css" rel="stylesheet" />
 </head>
 <body>
   <div id="map"></div>
-
-  <div id="overlay"></div>
-
   <div id="ui">
-    <div id="stats">🧍 Союзники: <span id="allyCount">0</span> | 📦 Ресурсы: <span id="resourcesCount">0</span></div>
-    <div id="buttons">
-      <button id="allyBtn">🧍 Союзники</button>
-      <button id="exitBtn">🚶 Выйти</button>
-      <button id="buildBtn">🧱 Строить</button>
-    </div>
+    <button id="buildBtn">🧱 Построить</button>
+    <button id="gatherBtn">📦 Собрать</button>
+    <button id="allyBtn">🧍 Союзники</button>
+    <button id="exitBtn">🚶 Выйти</button>
+    <div id="stats">🧍 Союзники: 0 | 📦 Ресурсы: 0</div>
   </div>
-
   <div id="joystick">
     <div id="stick"></div>
   </div>
-
   <script src="script.js"></script>
 </body>
 </html>
