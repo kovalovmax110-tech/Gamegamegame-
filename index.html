@@ -1,25 +1,55 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>City Survival: Map Edition</title>
-  <link href="style.css" rel="stylesheet" />
-  <script src="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.js"></script>
-  <link href="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.css" rel="stylesheet" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>City Survival</title>
+
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://unpkg.com/maplibre-gl@3.6.1/dist/maplibre-gl.css" rel="stylesheet" />
+  <script src="https://unpkg.com/maplibre-gl@3.6.1/dist/maplibre-gl.js"></script>
 </head>
 <body>
-  <div id="map"></div>
-  <div id="ui">
-    <button id="buildBtn">🧱 Построить</button>
-    <button id="gatherBtn">📦 Собрать</button>
-    <button id="allyBtn">🧍 Союзники</button>
-    <button id="exitBtn">🚶 Выйти</button>
-    <div id="stats">🧍 Союзники: 0 | 📦 Ресурсы: 0</div>
+  <!-- 1) Стартовый экран -->
+  <div id="welcome-screen" class="screen active">
+    <div class="welcome-content">
+      <h1>City Survival</h1>
+      <p class="subtitle">Начни выживание в своём городе</p>
+      <button id="start-button" class="game-button">Начать игру</button>
+    </div>
   </div>
-  <div id="joystick">
-    <div id="stick"></div>
+
+  <!-- 2) Экран выбора точки на карте -->
+  <div id="select-screen" class="screen">
+    <div id="select-map"></div>
+    <div class="map-ui">
+      <p>Нажми на карту, чтобы выбрать точку старта</p>
+      <button id="confirm-button" disabled>Выбрать место</button>
+    </div>
   </div>
+
+  <!-- 3) Игровой экран -->
+  <div id="game-screen" class="screen">
+    <div id="map"></div>
+    <div id="overlay"></div>
+
+    <div id="ui">
+      <div id="leftPanel">
+        <div id="stats">🧍 Союзники: <span id="allyCount">0</span> | 📦 Ресурсы: <span id="resourcesCount">0</span></div>
+      </div>
+      <div id="rightPanel">
+        <button id="buildBtn">🧱 Строить</button>
+        <button id="gatherBtn">📦 Собрать</button>
+        <button id="allyBtn">🧍 Союзники</button>
+        <button id="exitBtn">🚶 Выйти</button>
+      </div>
+    </div>
+
+    <div id="joystick">
+      <div id="stick"></div>
+    </div>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>
