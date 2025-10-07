@@ -1,52 +1,22 @@
-body {
-  margin: 0;
-  overflow: hidden;
-  background: #111;
-  touch-action: none;
-  user-select: none;
-}
-canvas {
-  background: #222;
-  display: block;
-}
-#controls {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
+body, html { margin: 0; height: 100%; overflow: hidden; background: #111; }
+#map { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+#overlay { position: absolute; inset: 0; background: rgba(20,20,20,0.4); pointer-events: none; }
+#ui {
+  position: absolute; top: 10px; left: 10px;
+  display: flex; flex-direction: column; gap: 6px;
 }
 button {
-  background: #333;
-  color: white;
-  border: none;
-  padding: 8px 14px;
-  border-radius: 10px;
-  font-size: 16px;
+  background: #333; color: #ccc; border: 1px solid #555;
+  padding: 6px 12px; border-radius: 6px; font-size: 14px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.3);
 }
 #joystick {
-  position: absolute;
-  bottom: 40px;
-  right: 40px;
-  width: 120px;
-  height: 120px;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 50%;
-  touch-action: none;
+  position: absolute; bottom: 40px; right: 40px;
+  width: 120px; height: 120px; border-radius: 50%;
+  background: rgba(255,255,255,0.05);
 }
 #stick {
-  position: absolute;
-  width: 60px;
-  height: 60px;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 50%;
-  left: 30px;
-  top: 30px;
-}
-#allies-box {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  color: white;
+  position: absolute; left: 30px; top: 30px;
+  width: 60px; height: 60px; border-radius: 50%;
+  background: rgba(255,255,255,0.2);
 }
